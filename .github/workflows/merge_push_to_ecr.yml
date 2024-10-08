@@ -30,14 +30,18 @@ jobs:
           unset CI
           npm run build
 
-      - name: Log in to Amazon ECR
-        id: login-ecr
+      - name: Assume AWS Role using OIDC
+        id: aws-credentials
         uses: aws-actions/configure-aws-credentials@v2
         with:
           role-to-assume: ${{ secrets.AWS_ROLE_TO_ASSUME }}
           aws-region: ${{ secrets.AWS_REGION }}
 
-      - name: Build Docker image
+      - name: Log in to Amazon ECR
+        run: |
+          aws ecr get-login-password --region ${{ secrets.AWS_REGION }} | docker login --username AWS --password-stdin 442387259505.dkr.ecr.${{ secrets.AWS_REGION }}.amazonaws.com
+
+      - name: Build and tag Docker image
         run: |
           # Define your image name and tag
           IMAGE_TAG=latest
