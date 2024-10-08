@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: todolist
-          image: ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.${{ secrets.AWS_REGION }}.amazonaws.com/${{ secrets.ECR_REPOSITORY_NAME }}
+          image: 442387259505.dkr.ecr.ap-southeast-1.amazonaws.com/learn/todolist
           ports:
             - containerPort: 8080
           env:
