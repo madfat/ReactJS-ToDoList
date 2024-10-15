@@ -15,11 +15,11 @@ spec:
     spec:
       containers:
         - name: todolist
-          image: 442387259505.dkr.ecr.ap-southeast-1.amazonaws.com/learn/todolist
+          image: 872583825157.dkr.ecr.ap-southeast-1.amazonaws.com/periodictable/atm
           ports:
             - containerPort: 8080
           env:
             - name: PROFILES_ACTIVE
               value: "dev"
-      imagePullSecrets:
-        - name: ecr-registry-secret
+      # imagePullSecrets:
+      #   - name: ecr-registry-secret
